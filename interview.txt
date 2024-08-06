@@ -1,0 +1,383 @@
+1.What is the difference between var, let, and const in JavaScript?
+>> Var: It is a keyword used to declare variables.It has global scope.Allows re-declaration within the same
+   scope.   
+   let:It is a keyword used to declare variables.It has block-level scope.Doesnot allows re-declaration within the same scope.
+   const:It is a keyword used to declare variables.It has block-level scope.We cannot re-assign a variable declared with const.Doesnot allows re-declaration within the same scope.
+
+2.How do you create a new React component?
+>> First we import React.
+   Then we define class or function component. Now-a-days functional component is used.
+   After we export the component and import it in the main file.
+
+3.What is the purpose of the render() method in a React component?
+>> render() method is used to describe what UI should look like for a component.
+   When a react component is displayed, the render() method is called to produce react elements.
+   This method must return a single root element(div) that contains all other elements.
+
+4.How do you handle state changes in a React component?
+>> State changes means, defining a state object and updating it using methods provided by React.
+   In class componenets, state is managed with 'this.state' and updating using 'this.setState()'.
+   In functional components, first we import 'useState' and state is defined by 'useState' with initial state value.
+   'useState' hook return a pair; the current state value and a function, this function is used to update.
+
+5.What is the difference between a controlled and uncontrolled component in React?
+>> Controlled Component: Element data can be controlled by parent component through callback functions(Ex:onChange())
+   Uncontrolled Component: Element's data can be controlled by the DOM itself.
+
+   Difference:
+          >>In controlled, value of the form element is always derived from the state.
+            In uncontrolled, value of the form element is maintained by the DOM.
+          >>In controlled, Requires event handlers to update the component’s state on every user input.
+            In uncontrolled, it does not require event handlers for every user input; instead, refs are used to read values.
+
+6.How do you pass props to a React component?
+>> Props are nothing but Properties, these are used to pass data from a parent component to child component.
+   First we define a child component that will receive props from its parent.
+   In the parent component, pass props to the child component and access props in the child component.
+
+7.What is the purpose of the key prop in a React component?
+>> The key prop is used to give  each element in a collection a stable identity.
+   React uses these keys to track elements.
+   Keys help React to determine which items need to be re-rendered, preserving the existing elements that did not change.
+
+8.How do you handle events in a React component?
+>> First we create a function that will be called when a event occurs.
+   Now attach this created event handler to a JSX element using React's synthetic event system. 
+   
+9. What is the difference between a functional component and a class component in React?
+>> Both functional components and class components are used to define components, but they have some      
+   differences in terms of syntax, state management, etc..
+
+    Difference:
+           >>Functional components are simpler and are defined as plain JavaScript functions.
+             Class components are defined using ES6 classes and extend from 'React.Component'.
+           >>Functional components use the 'useState' hook to manage state in functional components.
+             Class components manage state using 'this.state' and 'this.setState'.
+           >>Functional components are simpler and may result in better performance because they do not have the overhead of class methods and bindings.
+             Class components might have a bit more overhead compared to functional components because of the need to bind methods and manage the this context.
+
+10. How do you use React Hooks?
+
+>> We use hooks in functional components and we use them in top of the component only.
+   we use this hook multiple times in a component.
+   First, Import the necessary hooks like 'useState', 'useEffect'... Then use the hooks.
+   Example:
+   const[state, setState]=useState('')
+
+11. What is the purpose of the useEffect() hook in React?
+>>  The useEffect hook in React serves the purpose of handling side effects in functional components. 
+    like making API calls, setting timers, etc..
+    The useEffect hook takes two arguments:
+       1. A function to run (the "effect" function)
+       2. An array of dependencies
+    It runs after the component has rendered, allowing you to perform actions that depend on the component being in the DOM.
+    It helps optimize performance.
+
+12. How do you fetch data from an API in a React component?
+>> To fetch data from an API in a React component, you can use the fetch API or libraries like Axios or fetch to make HTTP requests.
+    You typically make the API call inside a useEffect hook to fetch data when the component mounts. 
+    Once the data is fetched, you can update the component's state with the retrieved data using the useState hook. 
+    Finally, you can render the data in your component. This approach ensures that your component fetches and displays data efficiently
+
+13. What is the purpose of the useContext() hook in React? 
+>> useContext() provides a way to share values like themes, user information, or application settings across the component tree through the component tree without having to pass props down manually at every level.
+   We use React.createContext() to create useContext() hook.
+   We send props to a component using this hook using 'variableName.provider', to receive and use 'variableName.consumer'
+   Components using useContext will re-render when the context value changes.
+
+14. How do you use React Router for client-side routing?
+>> React Router is a library for handling client-side routing in React applications. 
+   It enables navigation between different views or pages without reloading the entire page.
+   import React from 'react';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+
+function App() 
+{
+  return (
+    <BrowserRouter>
+      <div>
+        <h1>My App</h1>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+function Home() {
+  return <h2>Home Page</h2>;
+}
+
+function About() {
+  return <h2>About Page</h2>;
+}
+
+15. What is the difference between useState() and useReducer() in React?
+>> useState():
+
+- Simple state management: useState() is for simple state management, where you have a single state variable and a single update function.
+- Local state: It's meant for local state management within a single component.
+- No need for complex logic: When you don't need complex logic to update the state.
+
+  useReducer():
+
+- Complex state management: useReducer() is for complex state management, where you have multiple state variables and complex logic to update them.
+- Global state: It's meant for global state management, where multiple components need to access and update the same state.
+- Need for complex logic: When you need complex logic to update the state, such as handling multiple state variables, API calls, or side effects.
+
+16. How do you optimize the performance of a React application?
+>>Optimizing the performance of a React application involves several techniques:
+- Code splitting: Break up large codebases into smaller chunks, loading only what's needed.
+- Lazy loading: Defer loading non-essential components or data until needed.
+- Memoization: Cache expensive function calls or computations to avoid redundant work.
+- Virtualization: Only render visible components, reducing unnecessary DOM updates.
+- Optimize rendering:
+    - Use shouldComponentUpdate to prevent unnecessary re-renders.
+    - Use React.memo or React.PureComponent for functional components.
+    - Avoid deep nesting and complex component trees.
+- Minimize DOM updates:
+    - Use useState and useReducer wisely.
+    - Avoid unnecessary state updates.
+    - Use useCallback and useMemo to memoize functions and values.
+- Optimize images and assets:
+    - Compress images.
+    - Use image lazy loading.
+    - Use SVGs instead of raster images when possible.
+
+17. What is the purpose of the shouldComponentUpdate() method in a React component?
+Ans.
+
+The shouldComponentUpdate() method in a React component serves several purposes:
+- Prevents unnecessary re-renders: It helps determine whether a component should re-render when its props or state change.
+- Optimizes performance: By skipping unnecessary re-renders, it improves the component's performance and reduces the number of DOM updates.
+- Controls rendering behavior: It gives you fine-grained control over when a component should re-render, allowing for custom rendering logic.
+
+The method receives two arguments:
+- nextProps: The upcoming props
+- nextState: The upcoming state
+
+It should return a boolean value:
+- true: The component should re-render
+- false: The component should not re-render
+
+18. How do you use React DevTools for debugging?
+Ans.
+
+React DevTools is a browser extension that helps you debug and inspect your React applications. Here's how to use it:
+
+- Install the extension: Add React DevTools to your browser from the Chrome Web Store or Mozilla Add-ons.
+- Open the DevTools: Press Ctrl + Shift + I (Windows/Linux) or Cmd + Opt + I (Mac) to open the browser's developer tools.
+- Switch to the React tab: In the DevTools, switch to the "React" tab.
+- Inspect components: In the component tree, select a component to inspect its props, state, and context.
+- View component hierarchy: See the component's parent and child components.
+- Debug component props and state: Inspect and edit props and state values.
+- Check component errors: See error messages and stack traces for components.
+- Use the profiler: Record and analyze performance data to identify bottlenecks.
+- Take snapshots: Capture the component tree at a specific point in time.
+- Search and filter: Use the search bar to find specific components or filter by type.
+
+19. What is the difference between a Higher-Order Component (HOC) and a Render Props pattern in React?
+Ans.
+
+>>To use React Router for client-side routing, you first need to install it by running "npm install react-router-dom". 
+  Then, you can set up your routes using components like "BrowserRouter", "Route", and "Link".
+  For example, you can wrap your entire application with "BrowserRouter" and define different routes using "Route" components. 
+  Each "Route" component specifies a path and the component to render when that path matches. 
+  You can use "Link" components to navigate between different routes.
+
+15. What is the difference between useState() and useReducer() in React?
+
+>>useState() and useReducer() are both hooks in React for managing state, but they serve different purposes and have different use cases:
+
+  useState():
+
+  - Simple state management: useState() is for simple state management, where you have a single state variable and a single update function.
+  - Local state: It's meant for local state management within a single component.
+  - No need for complex logic: When you don't need complex logic to update the state.
+
+  useReducer():
+
+  - Complex state management: useReducer() is for complex state management, where you have multiple state variables and complex logic to update them.
+  - Global state: It's meant for global state management, where multiple components need to access and update the same state.
+  - Need for complex logic: When you need complex logic to update the state, such as handling multiple state variables, API calls, or side effects.
+
+
+16. How do you optimize the performance of a React application?
+Ans.
+
+Optimizing the performance of a React application involves several techniques:
+- Code splitting: Break up large codebases into smaller chunks, loading only what's needed.
+- Lazy loading: Defer loading non-essential components or data until needed.
+- Memoization: Cache expensive function calls or computations to avoid redundant work.
+- Virtualization: Only render visible components, reducing unnecessary DOM updates.
+- Optimize rendering:
+    - Use shouldComponentUpdate to prevent unnecessary re-renders.
+    - Use React.memo or React.PureComponent for functional components.
+    - Avoid deep nesting and complex component trees.
+- Minimize DOM updates:
+    - Use useState and useReducer wisely.
+    - Avoid unnecessary state updates.
+    - Use useCallback and useMemo to memoize functions and values.
+- Optimize images and assets:
+    - Compress images.
+    - Use image lazy loading.
+    - Use SVGs instead of raster images when possible.
+
+
+
+
+
+17. What is the purpose of the shouldComponentUpdate() method in a React component?
+Ans.
+
+The shouldComponentUpdate() method in a React component serves several purposes:
+- Prevents unnecessary re-renders: It helps determine whether a component should re-render when its props or state change.
+- Optimizes performance: By skipping unnecessary re-renders, it improves the component's performance and reduces the number of DOM updates.
+- Controls rendering behavior: It gives you fine-grained control over when a component should re-render, allowing for custom rendering logic.
+
+The method receives two arguments:
+- nextProps: The upcoming props
+- nextState: The upcoming state
+
+It should return a boolean value:
+- true: The component should re-render
+- false: The component should not re-render
+
+Example:
+
+jsx
+class MyComponent extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    // Only re-render if the data prop has changed
+    return nextProps.data !== this.props.data;
+  }
+
+  render() {
+    // Render logic
+  }
+}
+
+
+18. How do you use React DevTools for debugging?
+Ans.
+
+React DevTools is a browser extension that helps you debug and inspect your React applications. Here's how to use it:
+
+- Install the extension: Add React DevTools to your browser from the Chrome Web Store or Mozilla Add-ons.
+- Open the DevTools: Press Ctrl + Shift + I (Windows/Linux) or Cmd + Opt + I (Mac) to open the browser's developer tools.
+- Switch to the React tab: In the DevTools, switch to the "React" tab.
+- Inspect components: In the component tree, select a component to inspect its props, state, and context.
+- View component hierarchy: See the component's parent and child components.
+- Debug component props and state: Inspect and edit props and state values.
+- Check component errors: See error messages and stack traces for components.
+- Use the profiler: Record and analyze performance data to identify bottlenecks.
+- Take snapshots: Capture the component tree at a specific point in time.
+- Search and filter: Use the search bar to find specific components or filter by type.
+
+
+19. What is the difference between a Higher-Order Component (HOC) and a Render Props pattern in React?
+Ans.
+
+Higher-Order Components (HOCs) and Render Props are both patterns in React for reusing and abstracting logic, but they differ in their approach:
+
+Higher-Order Components (HOCs):
+- Wrap a component: A HOC wraps a component with another component.
+- Inject props: The HOC injects props into the wrapped component.
+- Control rendering: The HOC controls the rendering of the wrapped component.
+- Stateful logic: HOCs can contain stateful logic.
+
+Example:
+
+jsx
+const withLoadingIndicator = (WrappedComponent) => {
+  return function EnhancedComponent({ props }) {
+    if (props.isLoading) {
+      return <div>Loading...</div>;
+    }
+    return <WrappedComponent {...props} />;
+  };
+};
+
+Render Props:
+- Function as a prop: A component receives a function as a prop.
+- Render logic: The component calls the function to render its content.
+- Controlled by parent: The parent component controls the rendering logic.
+- Stateless logic: Render Props typically contain stateless logic.
+
+Example:
+
+jsx
+const WithLoadingIndicator = ({ children, isLoading }) => {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  return children();
+};
+
+<WithLoadingIndicator isLoading={true}>
+  {() => <div>Content</div>}
+</WithLoadingIndicator>;
+
+
+20. How do you use React with TypeScript?
+Ans.
+
+Here's a concise guide on using React with TypeScript:
+
+Setup
+- Install required packages: typescript, @types/react, @types/react-dom
+- Create a tsconfig.json file with the following settings:
+
+{
+  "compilerOptions": {
+    "outDir": "build",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es6",
+    "jsx": "react"
+  }
+}
+
+
+TypeScript and React
+- Rename JavaScript files to TypeScript: .js to .tsx (React components) or .ts (non-React files)
+- Use TypeScript syntax and features:
+    - Type annotations for variables, function parameters, and return types
+    - Interfaces for component props and state
+    - Enums, generics, and other TypeScript features
+- Update imports and exports:
+    - Use import * as React from 'react';
+    - Use export instead of module.exports
+
+TypeScript and React Components
+- Use React.FC for functional components:
+tsx
+const MyComponent: React.FC<Props> = ({ name }) => {
+  return <div>Hello, {name}!</div>;
+};
+
+
+- Use React.Component for class components:
+tsx
+class MyComponent extends React.Component<Props, State> {
+  render() {
+    return <div>Hello, {this.props.name}!</div>;
+  }
+}
+
+
+Additional Tips
+- Use interfaces to define prop and state types
+- Use the type keyword to define custom types
+- Use TypeScript's built-in types, such as React.ReactNode and React.ReactElement
+
+
+
+
